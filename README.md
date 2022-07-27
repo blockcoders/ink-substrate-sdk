@@ -1,11 +1,15 @@
+<div align="center">
+  <img src="./.images/inksdk-logo.svg" alt="ink! substrate sdk" height="136" />
+<h1 align="center">
+  JavaScript SDK for Ink! substrate smart contracts
+</h1>
+
 # Ink! Substrate SDK
 
 [![npm](https://img.shields.io/npm/v/ink-substrate-sdk)](https://www.npmjs.com/package/ink-substrate-sdk)
 [![CircleCI](https://circleci.com/gh/blockcoders/ink-substrate-sdk/tree/main.svg?style=svg)](https://circleci.com/gh/blockcoders/ink-substrate-sdk/tree/main)
 [![Coverage Status](https://coveralls.io/repos/github/blockcoders/ink-substrate-sdk/badge.svg?branch=main)](https://coveralls.io/github/blockcoders/ink-substrate-sdk?branch=main)
 [![vulnerabilities](https://img.shields.io/snyk/vulnerabilities/npm/ink-substrate-sdk)](https://snyk.io/test/github/blockcoders/ink-substrate-sdk)
-
-JavaScript SDK for Ink! substrate smart contracts
 
 Currently under developement 🤓
 
