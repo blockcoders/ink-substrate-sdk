@@ -1,6 +1,6 @@
 {
   "name": "ink-substrate-sdk",
-  "version": "0.1.0-alpha.0",
+  "version": "0.1.0-alpha.1",
   "description": "JavaScript SDK for Ink! substrate smart contracts.",
   "author": "Blockcoders <engineering@blockcoders.io>",
   "license": "MIT",
@@ -17,10 +17,9 @@
     "access": "public"
   },
   "scripts": {
-    "test": "NODE_ENV=test mocha -t 120000 --require ts-node/register src/**/*.spec.ts --exit",
-    "test:watch": "NODE_ENV=test mocha -t 120000 --watch --watch-files src/**/*.ts --require ts-node/register src/**/*.spec.ts",
-    "test:cov": "nyc npm run test",
-    "test:e2e": "NODE_ENV=test mocha -t 360000 --require ts-node/register src/**/*.e2e-spec.ts --exit",
+    "test": "NODE_ENV=test echo \"no test specified\" && exit 0",
+    "test:cov": "NODE_ENV=test echo \"no test specified\" && exit 0",
+    "test:e2e": "NODE_ENV=test echo \"no test e2e specified\" && exit 0",
     "clean": "rm -rf ./lib ./lib.esm ./lib.esnext",
     "build": "tsc --build ./tsconfig.build.json",
     "prebuild-all": "npm run clean",
@@ -41,14 +40,25 @@
     "url": "git+https://github.com/blockcoders/ink-substrate-sdk.git"
   },
   "keywords": [
-    "harmony",
-    "marketplace",
+    "substrate",
+    "polkadot",
+    "kusama",
     "blockchain",
     "nft",
-    "hrc721",
-    "hrc1155",
-    "harmony-sdk",
-    "one"
+    "token",
+    "erc20",
+    "trait-erc20",
+    "erc721",
+    "trait-erc721",
+    "erc1155",
+    "trait-erc1155",
+    "smart-contracts",
+    "dot",
+    "trait",
+    "ink!",
+    "ink",
+    "ink-contract",
+    "ink-event"
   ],
   "bugs": {
     "url": "https://github.com/blockcoders/ink-substrate-sdk/issues"
