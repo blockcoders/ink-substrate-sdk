@@ -1,6 +1,5 @@
 import '@polkadot/api-augment'
 import { ApiPromise } from '@polkadot/api'
-import { Abi } from '@polkadot/api-contract'
 import erc20 from './metadata/erc20'
 import Block from './models/Block'
 import Event from './models/Event'
@@ -26,29 +25,27 @@ export const subscribeToNewEvents = async (provider: ApiPromise, cb?: (e: Event)
   await provider.query.system.events((events) => {
     events.forEach(async (record) => {
       const { event, phase, topics } = record
-      const { section, method, typeDef, meta, data, index } = event
       if (provider.events.contracts.ContractEmitted.is(event)) {
-        const [account_id, contract_evt] = data as any
-        const decoded = new Abi(erc20).decodeEvent(contract_evt)
-        const label = decoded?.event.identifier
-        const d: any = {}
+        const e = new Event(event, phase, topics)
+        const decoded = e.decode(erc20)
+        const summary: any = {}
         for (let i = 0; i < decoded?.event?.args.length; i++) {
           const a = decoded.event.args[i].name
-          d[a] = decoded.args[i]
+          summary[a] = decoded.args[i]
         }
-        const e = new Event(account_id.toString(), index, section, method, phase, topics, meta, typeDef, decoded, label)
         if (!cb) {
           console.log('\n-----------------New Event-----------------\n')
-          console.log('\nEvent: %j', label)
-          console.log('\nData: %j', d)
-          console.log('\nContract: %j', account_id)
-          console.log('\nIndex: %j', index)
-          console.log('\nSection: %j', section)
-          console.log('\nMethod: %j', method)
+          console.log('\nEvent: %j', decoded.event.identifier)
+          console.log('\nSummary: %j', summary)
+          console.log('\nContract: %j', e.contract)
+          console.log('\nIndex: %j', e.index)
+          console.log('\nSection: %j', e.section)
+          console.log('\nMethod: %j', e.method)
           console.log('\nPhase: %j', phase)
           console.log('\nTopics: %j', topics)
-          console.log('\nMeta: %j', meta)
-          console.log('\nTypeDef: %j', typeDef)
+          console.log('\nMeta: %j', e.meta)
+          console.log('\nTypeDef: %j', e.typeDef)
+          console.log('\nData: %j', e.data)
           console.log('\nDecoded: %j', decoded)
           console.log('\n-------------------------------------------\n')
         } else {
